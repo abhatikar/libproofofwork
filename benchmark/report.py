@@ -25,11 +25,11 @@ funcname = funcname.decode()
 prefix = prefix.decode().lower()
 s = s.decode()
 cnt = int(cnt)
-assert funcname in [ 'md5', 'sha1' ]
+assert funcname in [ 'md5', 'sha1', 'sha256' ]
 assert all(c in '0123456789abcdef' for c in prefix)
 
 # print result
-func = { 'md5': hashlib.md5, 'sha1': hashlib.sha1 }[funcname]
+func = { 'md5': hashlib.md5, 'sha1': hashlib.sha1, 'sha256': hashlib.sha256 }[funcname]
 digest = func(s.encode()).hexdigest().lower()
 print('[*] {}({}) = {}'.format(funcname, repr(s), digest))
 print('[*] {} hashes/sec'.format(cnt / elapsed))
